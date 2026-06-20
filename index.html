@@ -31,7 +31,6 @@
   --r:10px;
   --r2:14px;
   --ff:'Inter',sans-serif;
-  --fm:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);font-size:14px;line-height:1.6;min-height:100vh;overflow-x:hidden}
@@ -222,21 +221,6 @@ textarea::placeholder,input[type=text]::placeholder{color:var(--text3)}
 .feat-desc{font-size:12px;color:var(--text2);line-height:1.65}
 .feat-pill{position:absolute;top:12px;right:12px;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.05em}
 
-/* ====== ABOUT TAB ====== */
-.about-hero{text-align:center;padding:40px 20px 32px;border-bottom:1px solid var(--border);margin-bottom:28px}
-.about-hero h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.04em;margin-bottom:8px}
-.about-hero h2 span{background:linear-gradient(90deg,var(--accent),#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.about-hero p{color:var(--text2);font-size:13px;max-width:480px;margin:0 auto}
-.roadmap{display:flex;flex-direction:column;gap:0}
-.roadmap-item{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border)}
-.roadmap-item:last-child{border-bottom:none}
-.roadmap-step{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
-.step-done{background:var(--accent-dim);color:var(--accent);border:1px solid rgba(74,222,128,.3)}
-.step-todo{background:var(--bg3);color:var(--text3);border:1px solid var(--border)}
-.roadmap-text{font-size:12px;color:var(--text2);padding-top:5px}
-.roadmap-text strong{color:var(--text);font-weight:600}
-.tech-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
-.tech-tag{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:11px;padding:4px 10px;border-radius:6px;font-family:var(--fm)}
 
 /* ====== LOADING ====== */
 #loading{display:none;position:fixed;inset:0;z-index:999;background:rgba(7,8,12,.92);backdrop-filter:blur(10px);flex-direction:column;align-items:center;justify-content:center;gap:16px}
@@ -332,10 +316,7 @@ hr{border:none;border-top:1px solid var(--border);margin:20px 0}
     <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     Features
   </button>
-  <button class="nav-btn" onclick="switchTab('about',this)">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    About
-  </button>
+  
 </nav>
 
 <main>
@@ -682,56 +663,6 @@ hr{border:none;border-top:1px solid var(--border);margin:20px 0}
 </div>
 
 <!-- ============================= ABOUT TAB ============================= -->
-<div id="tab-about" class="tab">
-  <div class="about-hero">
-    <h2>QR<span>Shield</span> — Open Source</h2>
-    <p>A cybersecurity platform for scanning, analyzing, and reporting threats in QR codes before they reach your device.</p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-    <div>
-      <div class="section-head"><h3>Tech Stack</h3><div class="section-line"></div></div>
-      <div class="tech-tags">
-        <span class="tech-tag">HTML5</span><span class="tech-tag">CSS3</span>
-        <span class="tech-tag">Vanilla JS</span><span class="tech-tag">html5-qrcode</span>
-        <span class="tech-tag">Python 3.11</span><span class="tech-tag">FastAPI</span>
-        <span class="tech-tag">Pydantic v2</span><span class="tech-tag">httpx</span>
-        <span class="tech-tag">WHOIS API</span><span class="tech-tag">MaxMind GeoIP</span>
-        <span class="tech-tag">VirusTotal API</span><span class="tech-tag">Safe Browsing</span>
-        <span class="tech-tag">URLScan.io</span><span class="tech-tag">Docker</span>
-      </div>
-
-      <div class="section-head" style="margin-top:20px"><h3>Risk Scoring</h3><div class="section-line"></div></div>
-      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:16px;font-size:12px">
-        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text2)">0 – 34</span><span style="color:var(--accent);font-weight:600">✓ Safe</span></div>
-        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)"><span style="color:var(--text2)">35 – 69</span><span style="color:var(--warn);font-weight:600">⚠ Suspicious</span></div>
-        <div style="display:flex;justify-content:space-between;padding:6px 0"><span style="color:var(--text2)">70 – 100</span><span style="color:var(--danger);font-weight:600">✕ Malicious</span></div>
-      </div>
-    </div>
-
-    <div>
-      <div class="section-head"><h3>Roadmap</h3><div class="section-line"></div></div>
-      <div class="roadmap">
-        <div class="roadmap-item"><div class="roadmap-step step-done">✓</div><div class="roadmap-text"><strong>QR Scanner + URL Input</strong> — Camera scanning and manual analysis</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-done">✓</div><div class="roadmap-text"><strong>SSL & Redirect Analysis</strong> — Certificate and chain tracing</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-done">✓</div><div class="roadmap-text"><strong>Typosquatting + Domain Checks</strong> — Brand impersonation detection</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-done">✓</div><div class="roadmap-text"><strong>Risk Score Engine</strong> — Weighted 0-100 scoring</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-done">✓</div><div class="roadmap-text"><strong>Dashboard + History</strong> — Scan tracking and stats</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-todo">○</div><div class="roadmap-text"><strong>VirusTotal Integration</strong> — Live threat intelligence feed</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-todo">○</div><div class="roadmap-text"><strong>WHOIS / GeoIP APIs</strong> — Real domain age + geo data</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-todo">○</div><div class="roadmap-text"><strong>Docker + Cloud Deploy</strong> — One-click deployment</div></div>
-        <div class="roadmap-item"><div class="roadmap-step step-todo">○</div><div class="roadmap-text"><strong>User Auth + Teams</strong> — Multi-user SaaS mode</div></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:16px 20px;font-size:12px;color:var(--text2);line-height:1.7">
-    <strong style="color:var(--text)">⚠ Disclaimer:</strong> This tool is for educational and defensive security purposes only. The frontend demo uses simulated analysis. In production, connect to real threat intelligence APIs. Never use this tool to scan systems without authorization. Licensed under MIT.
-  </div>
-</div>
-
-</main>
-
 <script>
 // =====================================================================
 //  GLOBALS
